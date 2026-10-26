@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    // 1. URL Parameter Guest Name Personalization
     const urlParams = new URLSearchParams(window.location.search);
     const guestNameParam = urlParams.get('to');
     const guestNameElement = document.getElementById('guest-name');
@@ -11,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
         guestNameElement.textContent = "Tamu Undangan";
     }
 
-    // 2. Cover Screen & Reliable Audio Handling
     const coverSection = document.getElementById('cover-section');
     const mainContent = document.getElementById('main-content');
     const openInvitationBtn = document.getElementById('open-invitation');
@@ -47,29 +45,23 @@ document.addEventListener('DOMContentLoaded', function () {
         mainContent.classList.remove('d-none');
         document.body.style.overflow = 'auto';
 
-        // Play Music upon user interaction
         playAudio();
-
-        // Trigger Reveal & Scroll Observers
         initScrollAnimations();
     });
 
     audioControlBtn.addEventListener('click', toggleMusic);
 
-    // 3. Navbar Scroll Adaptive & ScrollSpy Logic
     const navbar = document.querySelector('.navbar');
     const navLinks = document.querySelectorAll('.custom-nav-link');
     const sections = document.querySelectorAll('header, section');
 
     window.addEventListener('scroll', function () {
-        // Navbar Background Change
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
 
-        // Active Navbar Link based on Scroll Position
         let currentSection = '';
         sections.forEach(section => {
             const sectionTop = section.offsetTop - 150;
@@ -86,7 +78,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // 4. Countdown Timer
     const weddingDate = new Date('December 20, 2026 08:00:00').getTime();
 
     function updateCountdown() {
@@ -115,7 +106,6 @@ document.addEventListener('DOMContentLoaded', function () {
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // 5. Scroll Animations & Timeline Highlight
     function initScrollAnimations() {
         const revealElements = document.querySelectorAll('.reveal-element');
         const timelineItems = document.querySelectorAll('.timeline-item');
@@ -146,17 +136,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const initialReveal = document.querySelectorAll('.cover-section .reveal-element');
     initialReveal.forEach(el => el.classList.add('visible'));
 
-    // RSVP Form Submission Handler
     const rsvpForm = document.getElementById('rsvp-form');
 
     if (rsvpForm) {
         rsvpForm.addEventListener('submit', function (e) {
             e.preventDefault();
-            
-            // Tampilkan notifikasi berhasil
             alert('Terima kasih! Konfirmasi kehadiran dan ucapan Anda telah berhasil dikirim.');
-            
-            // Reset form
             rsvpForm.reset();
         });
     }
@@ -169,7 +154,6 @@ document.addEventListener('DOMContentLoaded', function () {
         );
     }
 
-    // 7. Copy to Clipboard
     const copyButtons = document.querySelectorAll('.copy-btn');
     copyButtons.forEach(btn => {
         btn.addEventListener('click', function () {
